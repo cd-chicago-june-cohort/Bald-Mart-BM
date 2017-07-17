@@ -4,8 +4,9 @@ from time import strftime, localtime
 
 def index(request):
 
-    if 'items_allday' not in request.session:
-        request.session['items_allday'] = []
+    if 'all_day' not in request.session:
+        request.session['all_day']=0
+        request.session['spent']=0
 
     
 
@@ -37,15 +38,20 @@ def checkout(request):
         request.session['item_name'] = item_name
 
         request.session['price'] = float(request.session['products'][int(request.POST['id'])]['price'])
-
+        
         request.session['cost'] = float(request.session['price'] * request.session['quantity'])
 
-        return render(request, 'amadon_site/checkout.html')
+        request.session['spent'] += request.session['cost']
+        request.session['all_day'] += request.session['quantity']
+
+        # return render(request, 'amadon_site/checkout.html')
+    
+    return redirect('/show_cart')
 
 
-    else:
-
-        return redirect('/')
+def show_cart(request):
+    
+    return render(request, 'amadon_site/checkout.html')
 
 
 def reset(request):

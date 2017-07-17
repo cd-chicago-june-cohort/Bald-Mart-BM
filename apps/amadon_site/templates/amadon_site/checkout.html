@@ -23,7 +23,7 @@
                 <h3>We have charged ${{request.session.cost}} to your credit card for {{request.session.quantity}} {{request.session.item_name}}.</h3>
             </div>
             <div class="row">
-                <h3>You have ordered {{request.session.quantity}} items and spent ${{request.session.cost}}</h3>
+                <h3>You have ordered {{request.session.all_day}} items and spent ${{request.session.spent}}</h3>
             </div>
             <form action="/reset">
                 <input type="submit" value="Clear Cart">
