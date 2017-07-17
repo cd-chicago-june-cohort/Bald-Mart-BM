@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'amadon_site/css/styles.css' %}" media="screen" title="BaldMart" charset="UTF-8">
+
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-6 left">
+            <div class="jumbotron">
+                <h1>BaldMart</h1>
+            </div>
+        </div>
+        <div class="col-md-6 right">
+            <div class="row">
+                <h2>Thanks for buying the Essentials at BaldMart!</h2>
+            </div>
+            <div class="row">
+                <h3>We have charged ${{request.session.cost}} to your credit card for {{request.session.quantity}} {{request.session.item_name}}.</h3>
+            </div>
+            <div class="row">
+                <h3>You have ordered {{request.session.quantity}} items and spent ${{request.session.cost}}</h3>
+            </div>
+            <form action="/reset">
+                <input type="submit" value="Clear Cart">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'amadon_site/css/styles.css' %}" media="screen" title="BaldMart" charset="UTF-8">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1 id="header">BaldMart</h1>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="centered">Essentials</th>
+                        <th class="centered">Price</th>
+                        <th class="centered">Quantity</th>
+                        <th class="centered">Buy Now</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in request.session.products %}
+                    <tr>   
+                        <td>{{item.product}}</td>
+                        <td class="centered">${{item.price}}</td>
+                        <form action="/checkout" method="post">
+                                {% csrf_token %}
+                            <td class="centered"><select name="quantity" id="quantity">
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                    <option value=6>6</option>
+                                    <option value=7>7</option>
+                                    <option value=8>8</option>
+                                    <option value=9>9</option>
+                                </select></td>
+                            <td class="centered">
+                                <input type="submit" name="buy" value="Buy!" id="buybutton">
+                                <input type="hidden" value="{{item.product_id}}" name="id">
+                            </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>                      
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+thead {
+    background-color: lightgray;
+}
+
+select {
+    text-align: center;
+}
+
+.jumbotron {
+    margin-top: 20px;
+    border: 1px solid black;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(gray), to(white));
+    background-image: -webkit-linear-gradient(top, gray, white);
+    background-image: -moz-linear-gradient(top, gray, white);
+    background-image: linear-gradient(to bottom, gray, white);
+}
+
+#buybutton {
+    width: 60px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(gray), to(white));
+    background-image: -webkit-linear-gradient(top, gray, white);
+    background-image: -moz-linear-gradient(top, gray, white);
+    background-image: linear-gradient(to bottom, gray, white);
+
+}
+
+.centered {
+    text-align: center;
+}
+
+.right {
+    margin-top: 20px;
+}
